@@ -1,6 +1,13 @@
 from django.conf.urls import url
-from . import views
+from data import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
+    url(r'^entry', views.entry, name='entry'),
+    url(r'^addteacher', views.addteacher, name='addteacher'),
+    url(r'^addsubject', views.addsubject, name='addsubject'),
+    url(r'^addclassroom', views.addclassroom, name='addclassroom'),
+    url(r'^addclass', views.addclass, name='addclass'),
+    url(r'^view', views.view, name='view'),
+    url(r'^timetable', views.timetable, name='timetable'),
 ]

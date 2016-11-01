@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>School Timetable</title>
+    <meta charset="utf-8" />
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/timetable_page.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="/static/js/timetabledragdrop.js"></script>
+</head>
+
+<body class="body">
+
+    <div id="lefts" class="left droppable">
+        <table>
+            <tr>{% for subject in subjects %}
+                <td>
+                    <div class="item" style="">{{ subject.name }}</div>
+                </td>
+            </tr>{% endfor %}
+        </table>
+    </div>
+
+    <div class="right">
+        <table style="background-color:#f6f6f6">
+            <tr>
+                <td class="blank"></td>
+                <td class="title">Poniedziałek</td>
+            </tr>
+            <tr>
+                <td class="title">1</td>
+                <td class="drop droppable"></td>
+                <td class="drop droppable"></td>
+                <td class="drop droppable"></td>
+                <td class="drop droppable"></td>
+                <td class="drop droppable"></td>
+            </tr>
+            <tr>
+                <td class="title">2</td>
+                <td class="drop droppable"></td>
+                <td class="drop droppable"></td>
+                <td class="drop droppable"></td>
+                <td class="drop droppable"></td>
+                <td class="drop droppable"></td>
+            </tr>
+            <tr>
+                <td class="title">3</td>
+                <td class="drop droppable"></td>
+                <td class="drop droppable"></td>
+                <td class="drop droppable"></td>
+                <td class="drop droppable"></td>
+                <td class="drop droppable"></td>
+            </tr>
+            <tr>
+                <td class="title">4</td>
+                <td class="drop droppable"></td>
+                <td class="drop droppable"></td>
+                <td class="drop droppable"></td>
+                <td class="drop droppable"></td>
+                <td class="drop droppable"></td>
+            </tr>
+            <tr>
+                <td class="title">5</td>
+                <td class="drop droppable"></td>
+                <td class="drop droppable"></td>
+                <td class="drop droppable"></td>
+                <td class="drop droppable"></td>
+                <td class="drop droppable"></td>
+            </tr>
+            <tr>
+                <td class="title">6</td>
+                <td class="drop droppable"></td>
+                <td class="drop droppable"></td>
+                <td class="drop droppable"></td>
+                <td class="drop droppable"></td>
+                <td class="drop droppable"></td>
+            </tr>
+            <tr>
+                <td class="title">7</td>
+                <td class="drop droppable"></td>
+                <td class="drop droppable"></td>
+                <td class="drop droppable"></td>
+                <td class="drop droppable"></td>
+                <td class="drop droppable"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

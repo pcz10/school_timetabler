@@ -1,0 +1,24 @@
+body {
+     background-image: url("time.jpg");
+     background-size:     cover;                      /* <------ */
+     background-repeat:   no-repeat;
+
+}
+
+#entryButton {
+    position: absolute;
+    top: 60%;
+    left: 10%;
+}
+
+#viewButton {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+}
+
+#generateButton {
+    position: absolute;
+    top: 40%;
+    left: 10%;
+}

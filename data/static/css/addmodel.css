@@ -1,0 +1,15 @@
+form {
+  width: 100px;
+  position: absolute;
+  top: 20%;
+  left: 20%;
+}
+
+label {
+  display: inline-block;
+  width: 152px;
+}
+
+input {
+  display: inline-block;
+}
