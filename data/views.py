@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .forms import SubjectForm, TeacherForm, ClassroomForm, ClassForm
-from .models import Subject
+from .models import Subject, Class, Teacher, Classroom
 
 
 def index(request):
@@ -10,8 +10,11 @@ def view(request):
     return render(request, 'data/view.html')
 
 def timetable(request):
-    subjects = Subject.objects.order_by('name')
-    return render(request, 'data/timetable.html', {'subjects': subjects})
+    classes = Class.objects.order_by('name')
+    teachers = Teacher.objects.order_by('name')
+    classrooms = Classroom.objects.order_by('name')
+    return render(request, 'data/timetable.html', 
+    {'classes': classes, 'teachers': teachers, 'classrooms': classrooms})
 
 def entry(request):
     return render(request, 'data/entry.html')

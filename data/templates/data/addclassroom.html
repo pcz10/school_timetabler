@@ -13,6 +13,19 @@
 </head>
 
 <body class="body">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">School Timetabler</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/ ">Strona główna</a></li>
+                <li><a href="/view">Wyświetl dane</a></li>
+                <li><a href="/timetable">Uzupełnij plan</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <form method='POST' action=''>{% csrf_token %}
     {{ form.as_p }}
     <input type='submit' value='Dodaj salę' />

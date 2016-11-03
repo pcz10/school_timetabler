@@ -42,3 +42,10 @@ class Classroom(models.Model):
         return str(self.name)
 
 
+class Schoolday(models.Model):
+    day = models.CharField(max_length=20)
+
+    def __unicode__(self):
+        return str(self.day)
+    def __str__(self):
+        return str(self.day)

@@ -1,7 +1,5 @@
 body {
-    background-image: url("time.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-color: #DCDCDC;
 }
 
 table, th, td {
@@ -10,7 +8,30 @@ table, th, td {
     text-align: center;
 }
 
-right {
-    overflow-y: scroll;
+td {
+    padding: 10px;
 }
 
+.teachers {
+    position: absolute;
+    left: 40px;
+    top: 150px;
+}
+
+.rooms {
+    position: absolute;
+    left: 40px;
+    top: 70px;
+}
+
+.timetable{
+    position: absolute;
+    left: 450px;
+    top: 150px;
+}
+
+.legend {
+    position: absolute;
+    left: 40px;
+    top: 520px;
+}
