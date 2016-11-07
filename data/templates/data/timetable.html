@@ -10,126 +10,111 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="/static/js/jquery-easyui-1.5/jquery.easyui.min.js"></script>
-
     <script src="/static/js/timetabledragdrop.js"></script>
 </head>
 
 <body class="body">
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+        <div class="container topnav">
+            <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">School Timetabler</a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand topnav" href="#">Rozpocznij planowanie</a>
             </div>
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="/ ">Strona główna</a></li>
-                <li><a href="/view">Wyświetl dane</a></li>
-                <li><a href="/timetable">Uzupełnij plan</a></li>
-            </ul>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#about">Start</a>
+                    </li>
+                    <li>
+                        <a href="#services">Usługi</a>
+                    </li>
+                    <li>
+                        <a href="#contact">Kontakt</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
         </div>
+        <!-- /.container -->
     </nav>
 
     <div class="left teachers droppable draggable">
         <table style="background-color: #f6f6f6">
-		<th>Nauczyciel : Przedmiot</th>
-            <tr>{% for teacher in teachers %}
+            <tr>
+                <th>Nauczyciele</th>
+            </tr>
+                {% for teacher in teachers %}
+            <tr>
                 <td>
-                    <div class="item" style="">{{ teacher.name }} {{ teacher.surname }} : {{ teacher.subject }}</div>
+                    <div class="item" style="">{{ teacher.name }} {{ teacher.surname }}</div>
                 </td>
-            </tr>{% endfor %}
+            </tr>
+                {% endfor %}
+        </table>
+    </div>
+
+    <div class="left subjects droppable draggable">
+        <table style="background-color: #f6f6f6">
+            <tr>
+                <th>Przedmioty</th>
+            </tr>            
+                {% for teacher in teachers %}
+            <tr>
+                <td>
+                    <div class="item" style="">{{ teacher.subject }}</div>
+                </td>
+            </tr>
+                {% endfor %}  
         </table>
     </div>
 
     <div class="left rooms droppable draggable">
         <table style="background-color: #f6f6f6">
-		<th colspan="100">Sala</th>
-            <tr>
-                {% for classroom in classrooms %}
-                    <td><div class="item" style="">{{ classroom.name }}</div></td>
-		{% endfor %}
+            <tr>            
+                <th>Sala</th>
             </tr>
+                {% for classroom in classrooms %}
+            <tr>            
+                <td>
+                    <div class="item" style="">{{ classroom.name }}</div>
+                </td>
+            </tr>
+                {% endfor %}
         </table>
     </div>
 
     <div class="timetable">
         <table style="background-color:#f6f6f6">
             <tr>
-                <th colspan="100">Poniedziałek</th>
+                <th colspan="1">Poniedziałek</th>
                                  <!-- ilosc klas powinna tu byc -->
             </tr>
             <tr>
                 <td class="blank"></td>{% for class in classes %}
                 <td class="title" colspan="1">{{ class.name }}</td>{% endfor %}
             </tr>
+            {% for class in classes %}
             <tr>
-                <th rowspan="2" >1</th>
+                <th rowspan="" >nr</th>
+                {% for class in classes %}
                 <td class="drop droppable"></td>
-                <td class="drop droppable"></td>
-                <td class="drop droppable"></td>
-                <td class="drop droppable"></td>
-                <td class="drop droppable"></td>
+                {% endfor %}
             </tr>
-            <tr>
-                <td class="title">2</td>
-                <td class="drop droppable"></td>
-                <td class="drop droppable"></td>
-                <td class="drop droppable"></td>
-                <td class="drop droppable"></td>
-                <td class="drop droppable"></td>
-            </tr>
-            <tr>
-                <td class="title">3</td>
-                <td class="drop droppable"></td>
-                <td class="drop droppable"></td>
-                <td class="drop droppable"></td>
-                <td class="drop droppable"></td>
-                <td class="drop droppable"></td>
-            </tr>
-            <tr>
-                <td class="title">4</td>
-                <td class="drop droppable"></td>
-                <td class="drop droppable"></td>
-                <td class="drop droppable"></td>
-                <td class="drop droppable"></td>
-                <td class="drop droppable"></td>
-            </tr>
-            <tr>
-                <td class="title">5</td>
-                <td class="drop droppable"></td>
-                <td class="drop droppable"></td>
-                <td class="drop droppable"></td>
-                <td class="drop droppable"></td>
-                <td class="drop droppable"></td>
-            </tr>
-            <tr>
-                <td class="title">6</td>
-                <td class="drop droppable"></td>
-                <td class="drop droppable"></td>
-                <td class="drop droppable"></td>
-                <td class="drop droppable"></td>
-                <td class="drop droppable"></td>
-            </tr>
-            <tr>
-                <td class="title">7</td>
-                <td class="drop droppable"></td>
-                <td class="drop droppable"></td>
-                <td class="drop droppable"></td>
-                <td class="drop droppable"></td>
-                <td class="drop droppable"></td>
-            </tr>
+            {% endfor %}
         </table>
     </div>
 
-    <div class="left rooms droppable draggable">
-        <table style="background-color: #f6f6f6">
-		<th colspan="100">Sala</th>
-            <tr>
-                {% for classroom in classrooms %}
-                    <td><div class="item" style="">{{ classroom.name }}</div></td>
-		{% endfor %}
-            </tr>
-        </table>
-    </div>
-
+<!--   
+    <!--ILOSC POZOSTALYCH GODZIN DO WYPEŁNIENIA
     <div class="legend">   
         <table style="background-color:#f6f6f6">
 	<th colspan="100">Ilość godzin do wypełnienia</th>        
@@ -140,6 +125,7 @@
         </tr>
         </table>
     </div>
+-->
 </body>
 
 </html>

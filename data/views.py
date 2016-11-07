@@ -16,9 +16,6 @@ def timetable(request):
     return render(request, 'data/timetable.html', 
     {'classes': classes, 'teachers': teachers, 'classrooms': classrooms})
 
-def entry(request):
-    return render(request, 'data/entry.html')
-
 def addteacher(request):
     form = TeacherForm(request.POST or None)
     if form.is_valid():

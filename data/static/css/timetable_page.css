@@ -15,19 +15,25 @@ td {
 .teachers {
     position: absolute;
     left: 40px;
-    top: 150px;
+    top: 80px;
+}
+
+.subjects {
+    position: absolute;
+    left: 210px;
+    top: 80px;
 }
 
 .rooms {
     position: absolute;
-    left: 40px;
-    top: 70px;
+    left: 340px;
+    top: 80px;
 }
 
 .timetable{
     position: absolute;
-    left: 450px;
-    top: 150px;
+    left: 410px;
+    top: 80px;
 }
 
 .legend {

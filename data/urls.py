@@ -3,7 +3,6 @@ from data import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-    url(r'^entry', views.entry, name='entry'),
     url(r'^addteacher', views.addteacher, name='addteacher'),
     url(r'^addsubject', views.addsubject, name='addsubject'),
     url(r'^addclassroom', views.addclassroom, name='addclassroom'),
