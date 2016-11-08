@@ -1,18 +1,24 @@
-var classes_holder = []
-
+var classes_holder = [];
+var actual_students_amount;
+var actual_room_capacity_amount;
 
 function validate(students_amount, classroom_capacity) {
 
-    console.log('students_amount ' + students_amount);
+    if(students_amount) {
+        actual_students_amount = students_amount
+    }
+    if(classroom_capacity) {
+        actual_room_capacity_amount = classroom_capacity
+    }
+    console.log('students_amount ' + actual_students_amount);
+    console.log('classroom_capacity ' + actual_room_capacity_amount);
 
 
-   //if (classroom_capacity < students_per_class) {
-   //    $('#accept_classes_button').addClass('disabled');
-   //    $('#accept_classes_button').removeAttr('data-toggle');
-   //} else {
-   //    $('#accept_classes_button').removeClass('disabled');
-   //    $('#accept_classes_button').attr("data-toggle", "modal");
-   //}
+   if (actual_room_capacity_amount < actual_students_amount) {
+       $('#accept_classes_button').attr('disabled', true);
+   } else {
+       $('#accept_classes_button').attr('disabled', false);
+   }
 }
 
 function add_classes() {
@@ -34,7 +40,18 @@ function add_classes() {
     var classes_obj = {day: day_value, teacher: teacher_value, subject: subject_value, room: room_value, class: class_value,
         class_number: class_number_value};
 
-    classes_holder.push(classes_obj);
+    if (classes_holder.length == 0) {
+
+    }
+    if (classes_holder.length > 0) {
+        var last_item = classes_holder[classes_holder.length - 1];
+        if (classes_obj.class_number == last_item.class_number && classes_obj.room == last_item.room) {
+            $('#accept_classes_button').attr('disabled', true);
+        } else {
+            $('#accept_classes_button').attr('disabled', false);
+            classes_holder.push(classes_obj);
+        }
+    }
 
     document.getElementById(class_number_value + "-" + class_value).innerHTML = teacher_value + "\n" + subject_value +
         "\nsala: " + room_value

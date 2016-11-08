@@ -94,7 +94,7 @@
                         <p>Wybierz klasę.
                             <select id="choose_class">
                             {% for class in classes %}
-                                <option value="{{ class.name }}">{{ class.name }}. Liczba uczniów:
+                                <option onmouseleave="validate({{ class.students_amount }}, false)" value="{{ class.name }}">{{ class.name }}. Liczba uczniów:
                                     <div id="students_amount"> {{ class.students_amount }}</div>
                                 </option>
                             {% endfor %}
@@ -112,7 +112,7 @@
                         <p>Wybierz salę.
                             <select id="choose_room">
                             {% for classroom in classrooms %}
-                                <option value="{{ classroom }}">Sala nr: {{ classroom.name }}. Pojemność sali:
+                                <option onmouseleave="validate(false, {{ classroom.capacity }})" value="{{ classroom }}">Sala nr: {{ classroom.name }}. Pojemność sali:
                                     <div id="classroom_capacity">{{ classroom.capacity }}</div>
                                 </option>
                             {% endfor %}
