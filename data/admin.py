@@ -4,10 +4,10 @@ from .models import Teacher
 from .models import Subject
 from .models import Class
 from .models import Classroom
-from .models import Schoolday
+from .models import Classes
 
 admin.site.register(Teacher)
 admin.site.register(Subject)
 admin.site.register(Class)
 admin.site.register(Classroom)
-admin.site.register(Schoolday)
+admin.site.register(Classes)

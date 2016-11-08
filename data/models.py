@@ -7,6 +7,7 @@ class Subject(models.Model):
 
     def __unicode__(self):
         return str(self.name)
+
     def __str__(self):
         return str(self.name)
 
@@ -18,6 +19,7 @@ class Teacher(models.Model):
 
     def __unicode__(self):
         return str(self.name)
+
     def __str__(self):
         return str(self.name)
 
@@ -28,6 +30,7 @@ class Class(models.Model):
 
     def __unicode__(self):
         return str(self.name)
+
     def __str__(self):
         return str(self.name)
 
@@ -38,14 +41,20 @@ class Classroom(models.Model):
 
     def __unicode__(self):
         return str(self.name)
+
     def __str__(self):
         return str(self.name)
 
 
-class Schoolday(models.Model):
+class Classes(models.Model):
+    classes_number = models.IntegerField()
     day = models.CharField(max_length=20)
+    teacher = models.ForeignKey(Teacher) 
+    subject = models.ForeignKey(Subject)
+    room = models.ForeignKey(Classroom)
 
     def __unicode__(self):
-        return str(self.day)
+        return str(self.day + self.teacher + self.subject + self.room + str(self.classes_number))
+
     def __str__(self):
-        return str(self.day)
+        return str(self.day + self.teacher + self.subject + self.room + str(self.classes_number))
