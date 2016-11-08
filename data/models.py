@@ -18,10 +18,10 @@ class Teacher(models.Model):
     subject = models.ForeignKey(Subject)
 
     def __unicode__(self):
-        return str(self.name)
+        return str(self.name + " " + self.surname)
 
     def __str__(self):
-        return str(self.name)
+        return str(self.name + " " + self.surname)
 
 
 class Class(models.Model):

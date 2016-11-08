@@ -9,6 +9,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
     <script src="/static/js/addClassesModal.js"></script>
+    <script src="/static/js/accept_classes.js"></script>
+    <script src="/libs/handlebars.runtime.js"></script>
 </head>
 
 <body class="body">
@@ -44,74 +46,38 @@
         </div>
         <!-- /.container -->
     </nav>
-<!--
-    <div class="left teachers droppable draggable">
-        <table style="background-color: #f6f6f6">
-            <tr>
-                <th>Nauczyciele</th>
-            </tr>
-                {% for teacher in teachers %}
-            <tr>
-                <td>
-                    <div class="item" style="">{{ teacher.name }} {{ teacher.surname }}</div>
-                </td>
-            </tr>
-                {% endfor %}
-        </table>
-    </div>
-
-    <div class="left subjects droppable draggable">
-        <table style="background-color: #f6f6f6">
-            <tr>
-                <th>Przedmioty</th>
-            </tr>            
-                {% for teacher in teachers %}
-            <tr>
-                <td>
-                    <div class="item" style="">{{ teacher.subject }}</div>
-                </td>
-            </tr>
-                {% endfor %}  
-        </table>
-    </div>
-
-    <div class="left rooms droppable draggable">
-        <table style="background-color: #f6f6f6">
-            <tr>            
-                <th>Sala</th>
-            </tr>
-                {% for classroom in classrooms %}
-            <tr>            
-                <td>
-                    <div class="item" style="">{{ classroom.name }}</div>
-                </td>
-            </tr>
-                {% endfor %}
-        </table>
-    </div>-->
 
     <div class="timetable">
         <table  style="background-color:#f6f6f6">
             <tr>
-                <th colspan="1">Poniedziałek</th>
-                                 <!-- ilosc klas powinna tu byc -->
+                <th>
+                    <select id="choose_day" style="position: absolute;">
+                        <option value="Poniedziałek">Poniedziałek</option>
+                        <option value="Wtorek">Wtorek</option>
+                        <option value="Środa">Środa</option>
+                        <option value="Czwartek">Czwartek</option>
+                        <option value="Piątek">Piątek</option>
+                    </select>
+                </th>
             </tr>
             <tr>
-                <td class="blank"></td>{% for class in classes %}
-                <td class="title" colspan="1">{{ class.name }}</td>{% endfor %}
+                <th class="blank"></th>{% for class in classes %}
+                <th id ="{{ class.name }}" class="title">{{ class.name }}</th>{% endfor %}
             </tr>
             {% for class_counter in classes_counter %}
             <tr>
                 <td class="class_counter">{{ class_counter }}</td>
                 {% for class in classes %}
-                <td style="min-width: 100px; height: 60px;" class="classes"></td>
+                        <td id="{{ class_counter }}-{{ class }}" style="min-width: 100px; height: 60px;" class="classes"></td>
                 {% endfor %}
             </tr>
             {% endfor %}
         </table>
     </div>
 
-  <button type="button" class="btn btn-info btn-md" id="add_classes_button" onclick="backdropTrue()">Dodaj zajęcia</button>
+    <button type="button" class="btn btn-info btn-md" data-toggle="modal"
+            data-target="#add_classes_modal" id ="add_classes_modal_button">Dodaj zajęcia</button>
+
     <div id="add_classes_modal" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
@@ -121,15 +87,60 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Dodaj zajęcia</h4>
                 </div>
+
                 <div class="modal-body">
-                    <p>Wybierz godzine lekcyjną.</p>
-                    <p>Wybierz klasę.</p>
-                    <p>Wybierz salę.</p>
-                    <p>Wybierz wybierz nauczyciela.</p>
+                    <div class="choosable_modal">
+
+                        <p>Wybierz klasę.
+                            <select id="choose_class">
+                            {% for class in classes %}
+                                <option value="{{ class.name }}">{{ class.name }}. Liczba uczniów:
+                                    <div id="students_amount"> {{ class.students_amount }}</div>
+                                </option>
+                            {% endfor %}
+                            </select>
+                        </p>
+
+                        <p>Wybierz godzine lekcyjną.
+                            <select id="choose_classes_number">
+                            {% for classes_number in classes_counter %}
+                                <option value="{{ classes_number }}">{{ classes_number }}</option>
+                            {% endfor %}
+                            </select>
+                        </p>
+
+                        <p>Wybierz salę.
+                            <select id="choose_room">
+                            {% for classroom in classrooms %}
+                                <option value="{{ classroom }}">Sala nr: {{ classroom.name }}. Pojemność sali:
+                                    <div id="classroom_capacity">{{ classroom.capacity }}</div>
+                                </option>
+                            {% endfor %}
+                            </select>
+                        </p>
+
+                        <p>Wybierz nauczyciela.
+                            <select id="choose_teacher">
+                            {% for teacher in teachers %}
+                                <option value="{{ teacher }}">{{ teacher.name }} {{ teacher.surname }}</option>
+                            {% endfor %}
+                            </select>
+                        </p>
+
+                        <p>Wybierz przedmiot.
+                            <select id="choose_subject">
+                            {% for subject in subjects %}
+                                <option value="{{ subject }}">{{ subject.name }}</option>
+                            {% endfor %}
+                            </select>
+                        </p>
+
+                    </div>
                 </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-info" data-dismiss="modal">Zamknij</button>
-                    <button type="button" class="btn btn-success">Zapisz zmiany</button>
+                    <button onclick="add_classes()" type="submit" class="btn btn-success" id="accept_classes_button">Dodaj</button>
                 </div>
             </div>
         </div>

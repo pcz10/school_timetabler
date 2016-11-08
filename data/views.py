@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .forms import SubjectForm, TeacherForm, ClassroomForm, ClassForm
-from .models import Subject, Class, Teacher, Classroom
+from .models import Subject, Class, Teacher, Classroom, Classes
 import collections
 
 
@@ -15,12 +15,14 @@ def view(request):
 def timetable(request):
     dict = collections.OrderedDict()
     __fill_dict(dict)
+    zajecia = Classes.objects.order_by('subject__name')
     classes = Class.objects.order_by('name')
     teachers = Teacher.objects.order_by('name')
     classrooms = Classroom.objects.order_by('name')
+    subjects = Subject.objects.order_by('name')
     return render(request, 'data/timetable.html', 
     {'classes': classes, 'teachers': teachers, 'classrooms': classrooms,
-     'classes_counter': dict})
+     'classes_counter': dict, 'zajecia': zajecia, 'subjects': subjects})
 
 
 def addteacher(request):
