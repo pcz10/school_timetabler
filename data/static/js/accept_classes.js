@@ -1,4 +1,4 @@
-var classes_holder = []; // wyczyscic po dodaniu do bazy NIE ZAPOMNIJ
+var classes_holder = []; //TODO wyczyscic po dodaniu do bazy NIE ZAPOMNIJ
 var unavailable_teachers_per_classes_number_holder =
     {'1': [], '2': [], '3': [], '4': [], '5': [], '6': [], '7': [], '8': [], '9': []};
 

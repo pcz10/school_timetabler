@@ -35,9 +35,21 @@ table {
     border-spacing: 0;
 }
 
+#save_classes_to_db_bttn{
+    position: absolute;
+    left: 21%;
+    top: 95px;
+}
+
 #add_classes_modal_button{
     position: absolute;
-    left: 40px;
+    left: 2%;
+    top: 95px;
+}
+
+#add_hours_counters_bttn{
+    position: absolute;
+    left: 12%;
     top: 95px;
 }
 
@@ -49,9 +61,25 @@ table {
 }
 
 div.timetable{
-    width: 888px;
-    overflow: scroll;
+    width: 55%;
+    overflow: auto;
 }
 
+.modal {
+    overflow: auto;
+}
 
+@media screen and (min-width: 768px) {
 
+    .modal-dialog {
+
+      width: 500px; /* New width for default modal */
+
+    }
+}
+
+.modal-dialog{
+    margin-right: 0;
+    margin-left: 2%;
+    margin-top: 10%;
+}
