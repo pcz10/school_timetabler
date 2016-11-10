@@ -94,7 +94,7 @@
                         <p>Wybierz klasę.
                             <select id="choose_class">
                             {% for class in classes %}
-                                <option onmouseleave="validate({{ class.students_amount }}, false)" value="{{ class.name }}">{{ class.name }}. Liczba uczniów:
+                                <option onclick="validate_params()" value="{{ class.name }}">{{ class.name }}. Liczba uczniów:
                                     <div id="students_amount"> {{ class.students_amount }}</div>
                                 </option>
                             {% endfor %}
@@ -104,7 +104,7 @@
                         <p>Wybierz godzine lekcyjną.
                             <select id="choose_classes_number">
                             {% for classes_number in classes_counter %}
-                                <option value="{{ classes_number }}">{{ classes_number }}</option>
+                                <option onclick="validate_params()" value="{{ classes_number }}">{{ classes_number }}</option>
                             {% endfor %}
                             </select>
                         </p>
@@ -112,7 +112,7 @@
                         <p>Wybierz salę.
                             <select id="choose_room">
                             {% for classroom in classrooms %}
-                                <option onmouseleave="validate(false, {{ classroom.capacity }})" value="{{ classroom }}">Sala nr: {{ classroom.name }}. Pojemność sali:
+                                <option  onclick="validate_params()" value="{{ classroom }}">Sala nr: {{ classroom.name }}. Pojemność sali:
                                     <div id="classroom_capacity">{{ classroom.capacity }}</div>
                                 </option>
                             {% endfor %}
@@ -122,7 +122,7 @@
                         <p>Wybierz nauczyciela.
                             <select id="choose_teacher">
                             {% for teacher in teachers %}
-                                <option value="{{ teacher }}">{{ teacher.name }} {{ teacher.surname }}</option>
+                                <option onclick="validate_params()" value="{{ teacher }}">{{ teacher.name }} {{ teacher.surname }}</option>
                             {% endfor %}
                             </select>
                         </p>
@@ -130,7 +130,7 @@
                         <p>Wybierz przedmiot.
                             <select id="choose_subject">
                             {% for subject in subjects %}
-                                <option value="{{ subject }}">{{ subject.name }}</option>
+                                <option onclick="validate_params()" value="{{ subject }}">{{ subject.name }}</option>
                             {% endfor %}
                             </select>
                         </p>
