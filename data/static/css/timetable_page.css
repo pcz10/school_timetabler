@@ -65,6 +65,17 @@ div.timetable{
     overflow: auto;
 }
 
+.counters{
+    position: absolute;
+    left: 30%;
+    height: 25%;
+    top: 67%;
+}
+
+div.counters{
+    overflow: auto;
+}
+
 .modal {
     overflow: auto;
 }

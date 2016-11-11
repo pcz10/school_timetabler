@@ -22,6 +22,13 @@ function validate_params(){
     }
 }
 
+function decrease_counters(subject, grade) {
+    document.getElementById(subject + "-" + grade).innerHTML =
+        (document.getElementById(subject + "_hours_per_week").value - 1).toString();
+    document.getElementById(subject + "_hours_per_week").value =
+        document.getElementById(subject + "_hours_per_week").value - 1;
+}
+
 function add_classes() {
     var selected_class = document.getElementById("choose_class");
     var selected_class_number = document.getElementById("choose_classes_number");
@@ -45,6 +52,7 @@ function add_classes() {
         classes_holder.push(classes_obj);
         document.getElementById(class_number_value + "-" + class_value).innerHTML = teacher_value + "\n" + subject_value +
             "\nsala: " + room_value;
+        decrease_counters(subject_value, class_value);
         unavailable_teachers_per_classes_number_holder[class_number_value].push(teacher_value);
     } else {
         var last_item = classes_holder[classes_holder.length - 1];
@@ -57,7 +65,8 @@ function add_classes() {
             classes_holder.push(classes_obj);
             unavailable_teachers_per_classes_number_holder[class_number_value].push(teacher_value);
             document.getElementById(class_number_value + "-" + class_value).innerHTML = teacher_value + "\n" + subject_value +
-                "\nsala: " + room_value
+                "\nsala: " + room_value;
+            decrease_counters(subject_value, class_value);
         }
     }
 }
