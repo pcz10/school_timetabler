@@ -93,7 +93,7 @@
                             Wybierz klasę.
                             <select id="choose_class">
                                 {% for class in classes %}
-                                <option onclick="validate_params()" value="{{ class.name }}">{{ class.name }}.
+                                <option onclick="validate_params(false, {{ class.students_amount }})" value="{{ class.name }}">{{ class.name }}.
                                     Liczba uczniów: <div id="students_amount"> {{ class.students_amount }}</div></option>
                             {% endfor %}
                             </select>
@@ -110,7 +110,7 @@
                                 Wybierz salę.
                                 <select id="choose_room">
                                     {% for classroom in classrooms %}
-                                    <option  onclick="validate_params()" value="{{ classroom }}">
+                                    <option  onclick="validate_params({{ classroom.capacity }}, false)" value="{{ classroom }}">
                                         Sala nr: {{ classroom.name }}. Pojemność sali:
                             <div id="classroom_capacity">{{ classroom.capacity }}</div>
                             </option>
