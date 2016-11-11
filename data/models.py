@@ -3,7 +3,6 @@ from django.db import models
 
 class Subject(models.Model):
     name = models.CharField(max_length=20)
-    hours_per_week = models.IntegerField() #todo: do wyjebania
 
     def __unicode__(self):
         return str(self.name)

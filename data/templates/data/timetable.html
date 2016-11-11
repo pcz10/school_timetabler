@@ -90,13 +90,11 @@
                     <div class="modal-body">
                         <div class="choosable_modal">
                             <p>
-                                Wybierz klasę.
-                                <select id="choose_class">
-                                    {% for class in classes %}
-                                    <option onclick="validate_params()" value="{{ class.name }}">
-                                        {{ class.name }}. Liczba uczniów:
-                            <div id="students_amount"> {{ class.students_amount }}</div>
-                            </option>
+                            Wybierz klasę.
+                            <select id="choose_class">
+                                {% for class in classes %}
+                                <option onclick="validate_classroom_capacity(false, {{class.students_amount}} )" value="{{ class.name }}">{{ class.name }}.
+                                    Liczba uczniów: <div id="students_amount"> {{ class.students_amount }}</div></option>
                             {% endfor %}
                             </select>
                             </p>
@@ -112,7 +110,7 @@
                                 Wybierz salę.
                                 <select id="choose_room">
                                     {% for classroom in classrooms %}
-                                    <option  onclick="validate_params()" value="{{ classroom }}">
+                                    <option  onclick="validate_classroom_capacity({{ classroom.capacity }}, false)" value="{{ classroom }}">
                                         Sala nr: {{ classroom.name }}. Pojemność sali:
                             <div id="classroom_capacity">{{ classroom.capacity }}</div>
                             </option>
