@@ -4,6 +4,7 @@ function add_counter(subjects) {
     var grade = grade_selected.options[grade_selected.selectedIndex].value;
     for (i = 0; i < parsed_subjects.length; i++) {
         var subject = parsed_subjects[i].fields.name;
-        document.getElementById(subject + "-" + grade).innerHTML = document.getElementById(subject + "_hours_per_week").value;
+        var hours_per_week = document.getElementById(subject + "_hours_per_week").value;
+        document.getElementById(subject + "-" + grade).innerHTML = hours_per_week;
     }
 }

@@ -57,10 +57,8 @@ function validate_params(){
 
 function decrease_counters(subject, grade) {
     if(document.getElementById(subject + "-" + grade).innerHTML > 0) {
-    document.getElementById(subject + "-" + grade).innerHTML =
-        (document.getElementById(subject + "_hours_per_week").value - 1).toString();
-    document.getElementById(subject + "_hours_per_week").value =
-        document.getElementById(subject + "_hours_per_week").value - 1;
+        var decrease = document.getElementById(subject + "-" + grade).innerHTML - 1;
+        document.getElementById(subject + "-" + grade).innerHTML = decrease.toString();
     }
 }
 
