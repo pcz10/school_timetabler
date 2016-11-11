@@ -8,18 +8,22 @@ var unavailable_classrooms_per_classes_number_holder =
 
 
 function validate_available_classrooms(classroom, unavailable_classrooms_per_classes_number_holder, class_number_value) {
-    if ($.inArray(classroom, unavailable_classrooms_per_classes_number_holder[class_number_value]) > -1) {
-        $('#accept_classes_button').attr('disabled', true);
-    } else {
-        $('#accept_classes_button').attr('disabled', false);
+    var control_check = $.inArray(classroom, unavailable_classrooms_per_classes_number_holder[class_number_value]);
+    if (control_check > -1) {
+        return false;
+    }
+    else {
+        return true;
     }
 }
 
 function validate_available_teachers(teacher_value, unavailable_teachers_per_classes_number_holder, class_number_value) {
-    if ($.inArray(teacher_value, unavailable_teachers_per_classes_number_holder[class_number_value]) > -1) {
-        $('#accept_classes_button').attr('disabled', true);
-    } else {
-        $('#accept_classes_button').attr('disabled', false);
+    var control_check = $.inArray(teacher_value, unavailable_teachers_per_classes_number_holder[class_number_value]);
+    if (control_check > -1) {
+        return false;
+    }
+    else {
+        return true;
     }
 }
 
@@ -34,25 +38,28 @@ function validate_classroom_capacity(classroom_capacity, students_amount) {
         $('#accept_classes_button').attr('disabled', true);
     }
     if (actual_classroom_capacity < actual_students_amount) {
-        $('#accept_classes_button').attr('disabled', true);
-    } else {
-        $('#accept_classes_button').attr('disabled', false);
+        return false;
+    }
+    else {
+        return true;
     }
 }
 
-function validate_params(){
+function validate_params(classroom_capacity, students_amount){
     var selected_teacher = document.getElementById("choose_teacher");
     var selected_class_number = document.getElementById("choose_classes_number");
-    var students_amount_value = document.getElementById("students_amount").textContent;
-    var classroom_capacity = $('#classroom_capacity').html();
     var selected_room = document.getElementById("choose_room");
     var room_value = selected_room.options[selected_room.selectedIndex].value;
     var teacher_value = selected_teacher.options[selected_teacher.selectedIndex].value;
     var class_number_value = selected_class_number.options[selected_class_number.selectedIndex].value;
-    console.log('classroom_capacity   ' + classroom_capacity);
-    console.log('students_amount_value   ' + students_amount_value);
-    validate_available_teachers(teacher_value, unavailable_teachers_per_classes_number_holder, class_number_value);
-    validate_available_classrooms(room_value, unavailable_classrooms_per_classes_number_holder, class_number_value);
+    if( validate_classroom_capacity(classroom_capacity, students_amount) &&
+            validate_available_teachers(teacher_value, unavailable_teachers_per_classes_number_holder, class_number_value) &&
+                validate_available_classrooms(room_value, unavailable_classrooms_per_classes_number_holder, class_number_value)) {
+        $("#accept_classes_button").attr('disabled', false);
+    }
+    else {
+        $("#accept_classes_button").attr('disabled', true);
+    }
 }
 
 function decrease_counters(subject, grade) {
