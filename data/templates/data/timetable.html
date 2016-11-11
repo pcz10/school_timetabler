@@ -1,210 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <title>School Timetable</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/css/timetable_page.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.jquery.min.js"></script>
+        <script src="/static/js/bootstrap.min.js"></script>
+        <script src="/static/js/accept_classes.js"></script>
+        <script src="/static/js/accept_counters.js"></script>
+    </head>
 
-<head>
-    <title>School Timetable</title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/css/timetable_page.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.jquery.min.js"></script>
-    <script src="/static/js/bootstrap.min.js"></script>
-    <script src="/static/js/accept_classes.js"></script>
-
-</head>
-
-<body class="body">
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
-        <div class="container topnav">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+    <body class="body">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+            <div class="container topnav">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand topnav" href="#">Rozpocznij planowanie</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="#about">Start</a>
-                    </li>
-                    <li>
-                        <a href="#services">Usługi</a>
-                    </li>
-                    <li>
-                        <a href="#contact">Kontakt</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
-    <div class="timetable">
-        <table  style="background-color:#f6f6f6">
-            <tr>
-                <th>
-                    <select id="choose_day" style="position: absolute;">
-                        <option value="Poniedziałek">Poniedziałek</option>
-                        <option value="Wtorek">Wtorek</option>
-                        <option value="Środa">Środa</option>
-                        <option value="Czwartek">Czwartek</option>
-                        <option value="Piątek">Piątek</option>
-                    </select>
-                </th>
-            </tr>
-            <tr>
-                <th class="blank"></th>{% for class in classes %}
-                <th id ="{{ class.name }}" class="title">{{ class.name }}</th>{% endfor %}
-            </tr>
-            {% for class_counter in classes_counter %}
-            <tr>
-                <td class="class_counter">{{ class_counter }}</td>
-                {% for class in classes %}
-                        <td id="{{ class_counter }}-{{ class }}" style="min-width: 100px; height: 60px;" class="classes"></td>
-                {% endfor %}
-            </tr>
-            {% endfor %}
-        </table>
-    </div>
-
-    <button type="submit" class="btn btn-info btn-md" data-toggle="modal"
-            data-target="#add_counters_modal" id="add_hours_counters_bttn">Dodaj liczniki</button>
-
-    <div id="add_counters_modal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Dodaj licznik pozostałych godzin na tydzień przedmiotu </h4>
+                    </button>
+                    <a class="navbar-brand topnav" href="#">Rozpocznij planowanie</a>
                 </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#about">Start</a>
+                        </li>
+                        <li>
+                            <a href="#services">Usługi</a>
+                        </li>
+                        <li>
+                            <a href="#contact">Kontakt</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
+        <div class="timetable">
+            <table  style="background-color:#f6f6f6">
+                <tr>
+                    <th>
+                        <select id="choose_day" style="position: absolute;">
+                            <option value="Poniedziałek">Poniedziałek</option>
+                            <option value="Wtorek">Wtorek</option>
+                            <option value="Środa">Środa</option>
+                            <option value="Czwartek">Czwartek</option>
+                            <option value="Piątek">Piątek</option>
+                        </select>
+                    </th>
+                </tr>
+                <tr>
+                    <th class="blank"></th>
+                    {% for class in classes %}
+                    <th id ="{{ class.name }}" class="title">{{ class.name }}</th>
+                    {% endfor %}
+                </tr>
+                {% for class_counter in classes_counter %}
+                <tr>
+                    <td class="class_counter">{{ class_counter }}</td>
+                    {% for class in classes %}
+                    <td id="{{ class_counter }}-{{ class }}" style="min-width: 100px; height: 60px;" class="classes"></td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
 
-                <div class="modal-body">
-                    <div class="counters_choosable_modal">
-                        <div class ="form-group">
-                            <label class="font-noraml">
-                            Wybierz klasę.
-                            </label>
-                            <div class="input-group">
-                                <select data-placeholder="Wybierz klasę..." class="form-control chosen-select" style="width:350px;" tabindex="2">
+        <button type="button" class="btn btn-success btn-md" id="save_classes_to_db_bttn">Zapisz plan</button>
+
+        <button type="button" class="btn btn-info btn-md" data-toggle="modal"
+            data-target="#add_classes_modal" id ="add_classes_modal_button">Dodaj zajęcia</button>
+        <div id="add_classes_modal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Dodaj zajęcia</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="choosable_modal">
+                            <p>
+                                Wybierz klasę.
+                                <select id="choose_class">
                                     {% for class in classes %}
-                                        <option value="{{ class }}">{{ class }}</option>
+                                    <option onclick="validate_params()" value="{{ class.name }}">
+                                        {{ class.name }}. Liczba uczniów:
+                            <div id="students_amount"> {{ class.students_amount }}</div>
+                            </option>
+                            {% endfor %}
+                            </select>
+                            </p>
+                            <p>
+                                Wybierz godzine lekcyjną.
+                                <select id="choose_classes_number">
+                                    {% for classes_number in classes_counter %}
+                                    <option onclick="validate_params()" value="{{ classes_number }}">{{ classes_number }}</option>
                                     {% endfor %}
                                 </select>
-                            </div>
-
-                            {% for subject in subjects %}
-                            <label class="font-noraml">
-                            {{ subject }}.
-                            </label>
-                            <div class="input-group">
-                                Liczba godzin na tydzień: <input type="text" id="hours_"></br>
-                            </div>
+                            </p>
+                            <p>
+                                Wybierz salę.
+                                <select id="choose_room">
+                                    {% for classroom in classrooms %}
+                                    <option  onclick="validate_params()" value="{{ classroom }}">
+                                        Sala nr: {{ classroom.name }}. Pojemność sali:
+                            <div id="classroom_capacity">{{ classroom.capacity }}</div>
+                            </option>
                             {% endfor %}
+                            </select>
+                            </p>
+                            <p>
+                                Wybierz nauczyciela.
+                                <select id="choose_teacher">
+                                    {% for teacher in teachers %}
+                                    <option onclick="validate_params()" value="{{ teacher }}">{{ teacher.name }} {{ teacher.surname }}</option>
+                                    {% endfor %}
+                                </select>
+                            </p>
+                            <p>
+                                Wybierz przedmiot.
+                                <select id="choose_subject">
+                                    {% for subject in subjects %}
+                                    <option onclick="validate_params()" value="{{ subject }}">{{ subject.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </p>
                         </div>
                     </div>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-info" data-dismiss="modal">Zamknij</button>
-                    <button type="submit" class="btn btn-success" id="accept_classes_button">Dodaj</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <button type="button" class="btn btn-success btn-md" id="save_classes_to_db_bttn">Zapisz plan</button>
-
-    <button type="button" class="btn btn-info btn-md" data-toggle="modal"
-            data-target="#add_classes_modal" id ="add_classes_modal_button">Dodaj zajęcia</button>
-
-    <div id="add_classes_modal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-          <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Dodaj zajęcia</h4>
-                </div>
-
-                <div class="modal-body">
-                    <div class="choosable_modal">
-
-                        <p>Wybierz klasę.
-                            <select id="choose_class">
-                            {% for class in classes %}
-                                <option onclick="validate_params()" value="{{ class.name }}">{{ class.name }}. Liczba uczniów:
-                                    <div id="students_amount"> {{ class.students_amount }}</div>
-                                </option>
-                            {% endfor %}
-                            </select>
-                        </p>
-
-                        <p>Wybierz godzine lekcyjną.
-                            <select id="choose_classes_number">
-                            {% for classes_number in classes_counter %}
-                                <option onclick="validate_params()" value="{{ classes_number }}">{{ classes_number }}</option>
-                            {% endfor %}
-                            </select>
-                        </p>
-
-                        <p>Wybierz salę.
-                            <select id="choose_room">
-                            {% for classroom in classrooms %}
-                                <option  onclick="validate_params()" value="{{ classroom }}">Sala nr: {{ classroom.name }}. Pojemność sali:
-                                    <div id="classroom_capacity">{{ classroom.capacity }}</div>
-                                </option>
-                            {% endfor %}
-                            </select>
-                        </p>
-
-                        <p>Wybierz nauczyciela.
-                            <select id="choose_teacher">
-                            {% for teacher in teachers %}
-                                <option onclick="validate_params()" value="{{ teacher }}">{{ teacher.name }} {{ teacher.surname }}</option>
-                            {% endfor %}
-                            </select>
-                        </p>
-
-                        <p>Wybierz przedmiot.
-                            <select id="choose_subject">
-                            {% for subject in subjects %}
-                                <option onclick="validate_params()" value="{{ subject }}">{{ subject.name }}</option>
-                            {% endfor %}
-                            </select>
-                        </p>
-
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-info" data-dismiss="modal">Zamknij</button>
+                        <button onclick="add_classes()" type="submit" class="btn btn-success" id="accept_classes_button">Dodaj</button>
                     </div>
                 </div>
+            </div>
+        </div>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-info" data-dismiss="modal">Zamknij</button>
-                    <button onclick="add_classes()" type="submit" class="btn btn-success" id="accept_classes_button">Dodaj</button>
+        <button type="submit" class="btn btn-info btn-md" data-toggle="modal"
+            data-target="#add_counters_modal" id="add_hours_counters_bttn">Dodaj liczniki</button>
+        <div id="add_counters_modal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Dodaj licznik pozostałych godzin na tydzień przedmiotu </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="counters_choosable_modal">
+                            <div class ="form-group">
+                                <label class="font-noraml">
+                                Wybierz klasę.
+                                </label>
+                                <div class="input-group">
+                                    <select id="choosed_class_counter" data-placeholder="Wybierz klasę..." class="form-control chosen-select" style="width: 350px;" tabindex="2">
+                                        {% for class in classes %}
+                                        <option value="{{ class }}">{{ class }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                {% for subject in subjects %}
+                                <div class="input-group">
+                                    <label id="{{ subject }}_counter" class="font-normal">
+                                    {{ subject }}
+                                    </label>
+                                    <input id="{{ subject }}_hours_per_week" type="text"></br>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-info" data-dismiss="modal">Zamknij</button>
+                        <button onclick="add_counter('{{ serialized_subjects }}')" type="submit" class="btn btn-success" id="accept_counters_button">Dodaj</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-<!--
-    <div class="hours_to_fullfill_counters">
-        <ul>
-        </ul>
 
-            <td><div class="hourcounters">{{ teacher.subject }} -> {{ teacher.subject.hours_per_week }}h</div></td>
+        <div class="counters">
+            <table  style="background-color:#f6f6f6">
+                <tr>
+                    <th class="blank"></th>
+                    {% for class in classes %}
+                    <th id ="{{ class.name }}" class="title">{{ class.name }}</th>
+                    {% endfor %}
+                </tr>
+                {% for subject in subjects %}
+                <tr>
+                    <td class="class_counter">{{ subject }}</td>
+                    {% for class in classes %}
+                    <td id="{{ subject }}-{{ class }}" style="min-width: 100px; height: 60px;" class="classes"></td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
 
-        </tr>
-        </table>
-    </div>
--->
-
-</body>
-
+    </body>
 </html>
+

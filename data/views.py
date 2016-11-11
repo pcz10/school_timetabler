@@ -1,7 +1,9 @@
 from django.shortcuts import render
+from django.core import serializers
 from .forms import SubjectForm, TeacherForm, ClassroomForm, ClassForm
 from .models import Subject, Class, Teacher, Classroom, Classes
 import collections
+
 
 
 def index(request):
@@ -20,9 +22,11 @@ def timetable(request):
     teachers = Teacher.objects.order_by('name')
     classrooms = Classroom.objects.order_by('name')
     subjects = Subject.objects.order_by('name')
-    return render(request, 'data/timetable.html', 
-    {'classes': classes, 'teachers': teachers, 'classrooms': classrooms,
-     'classes_counter': dict, 'zajecia': zajecia, 'subjects': subjects})
+    serialized_subjects = serializers.serialize('json', subjects)
+    return render(request, 'data/timetable.html',
+        {'classes': classes, 'teachers': teachers, 'classrooms': classrooms,
+            'classes_counter': dict, 'zajecia': zajecia, 'subjects': subjects,
+            'serialized_subjects': serialized_subjects})
 
 
 def addteacher(request):
