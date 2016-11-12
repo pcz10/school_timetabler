@@ -72,9 +72,12 @@
     <div class="intro-header">
         <div class="container">
             <h1>    
-                <form style="color: #ffcc5c;" method="POST" action=''>{% csrf_token %}
-                    {{ form.as_ul }}
-                    <input type='submit' value='Dodaj przedmiot' />
+                <form style="color: #ffcc5c;" method="POST" action="">{% csrf_token %}
+                    <li>
+                        <label for="id_name">Nazwa przedmiotu:</label>
+                        <input id="id_name" maxlength="20" name="name" required="" type="text">
+                    </li>
+                    <input value="Dodaj przedmiot" type="submit">
                 </form>
             </h1>
          <hr class="intro-divider">

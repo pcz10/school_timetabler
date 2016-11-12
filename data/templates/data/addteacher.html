@@ -71,11 +71,35 @@
     <a name="about"></a>
     <div class="intro-header">
         <div class="container">
-            <h1>    
-                <form style="color: #ffcc5c;" method="POST" action=''>{% csrf_token %}
-                    {{ form.as_ul }}
-                    <input type='submit' value='Dodaj nauczyciela' />
+            <h1>
+                <form style="color: #ffcc5c;" method="POST" action="">{% csrf_token %}
+                    <li>
+                        <label for="id_name">Imię:</label>
+                        <input id="id_name" maxlength="20" name="name" required="" type="text">
+                    </li>
+                    <li>
+                        <label for="id_surname">Nazwisko:</label>
+                        <input id="id_surname" maxlength="20" name="surname" required="" type="text">
+                    </li>
+                    <li>
+                        <label for="id_subject">Przedmiot:</label>
+                        <select id="id_subject" name="subject" required="">
+                            <option value="" selected="selected">Wybierz przedmiot</option>
+                            <option value="3">Historia</option>
+                            <option value="4">Geografia</option>
+                            <option value="5">Przyroda</option>
+                            <option value="6">Plastyka</option>
+                            <option value="7">Matematyka</option>
+                            <option value="8">Język Polski</option>
+                            <option value="10">Język Angielski</option>
+                            <option value="11">Informatyka</option>
+                            <option value="12">WOS</option>
+                            <option value="13">Etyka</option>
+                        </select>
+                    </li>
+                    <input value="Dodaj nauczyciela" type="submit">
                 </form>
+
             </h1>
          <hr class="intro-divider">
     </div>

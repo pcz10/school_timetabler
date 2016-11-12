@@ -71,10 +71,17 @@
     <a name="about"></a>
     <div class="intro-header">
         <div class="container">
-            <h1>    
-                <form style="color: #ffcc5c;" method="POST" action=''>{% csrf_token %}
-                    {{ form.as_ul }}
-                    <input type='submit' value='Dodaj salę' />
+            <h1>
+                <form style="color: #ffcc5c;" method="POST" action="">{% csrf_token %}
+                    <li>
+                        <label for="id_name">Nazwa sali:</label>
+                        <input id="id_name" maxlength="5" name="name" required="" type="text">
+                    </li>
+                    <li>
+                        <label for="id_capacity">Pojemność sali:</label>
+                        <input id="id_capacity" name="capacity" required="" type="number">
+                    </li>
+                    <input value="Dodaj salę" type="submit">
                 </form>
             </h1>
          <hr class="intro-divider">

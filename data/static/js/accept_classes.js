@@ -1,11 +1,10 @@
-var classes_holder = []; //TODO wyczyscic po dodaniu do bazy NIE ZAPOMNIJ
+var classes_holder = [];
 var actual_students_amount;
 var actual_classroom_capacity;
 var unavailable_teachers_per_classes_number_holder =
     {'1': [], '2': [], '3': [], '4': [], '5': [], '6': [], '7': [], '8': [], '9': []};
 var unavailable_classrooms_per_classes_number_holder =
     {'1': [], '2': [], '3': [], '4': [], '5': [], '6': [], '7': [], '8': [], '9': []};
-
 
 function validate_available_classrooms(classroom, unavailable_classrooms_per_classes_number_holder, class_number_value) {
     var control_check = $.inArray(classroom, unavailable_classrooms_per_classes_number_holder[class_number_value]);
@@ -69,6 +68,23 @@ function decrease_counters(subject, grade) {
     }
 }
 
+function display_actual_classes(table_id){
+    $("#"+table_id+" td").html("");
+    var selected_day = document.getElementById("choose_day");
+    var day_value = selected_day.options[selected_day.selectedIndex].value;
+    for (i = 0; i < classes_holder.length; i++) {
+        var day = classes_holder[i].day;
+        if (day == day_value){
+            var subject = classes_holder[i].subject;
+            var teacher = classes_holder[i].teacher;
+            var room = classes_holder[i].room;
+            document.getElementById(classes_holder[i].classes_number + "-" + classes_holder[i].class).innerHTML =
+                "Nauczyciel: " + teacher + "<br>" + "Przedmiot: " + subject + "<br>" + "Sala: " + room;
+        }
+    }
+}
+
+
 function add_classes() {
     var selected_class = document.getElementById("choose_class");
     var selected_class_number = document.getElementById("choose_classes_number");
@@ -130,6 +146,7 @@ function post_classes() {
             data: classes,
         })
     }
+    classes_holder = [];
 }
 
 function getCookie(name) {
