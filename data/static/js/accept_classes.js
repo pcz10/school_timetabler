@@ -90,15 +90,15 @@ function add_classes() {
 
     if(classes_holder.length == 0) {
         classes_holder.push(classes_obj);
-        document.getElementById(class_number_value + "-" + class_value).innerHTML = teacher_value + "\n" + subject_value +
-            "\nsala: " + room_value;
+            document.getElementById(class_number_value + "-" + class_value).innerHTML =
+                "Nauczyciel: " + teacher_value + "<br>" + "Przedmiot: " + subject_value + "<br>" + "Sala: " + room_value;
         decrease_counters(subject_value, class_value);
         unavailable_teachers_per_classes_number_holder[class_number_value].push(teacher_value);
         unavailable_classrooms_per_classes_number_holder[class_number_value].push(room_value);
     } else {
         var last_item = classes_holder[classes_holder.length - 1];
 
-        if (classes_obj.class_number == last_item.class_number && classes_obj.room == last_item.room ) {
+        if (classes_obj.classes_number == last_item.classes_number && classes_obj.room == last_item.room ) {
             $('#accept_classes_button').attr('disabled', true);
         }
         else {
@@ -106,8 +106,8 @@ function add_classes() {
             classes_holder.push(classes_obj);
             unavailable_teachers_per_classes_number_holder[class_number_value].push(teacher_value);
             unavailable_classrooms_per_classes_number_holder[class_number_value].push(room_value);
-            document.getElementById(class_number_value + "-" + class_value).innerHTML = teacher_value + "\n" + subject_value +
-                "\nsala: " + room_value;
+            document.getElementById(class_number_value + "-" + class_value).innerHTML =
+                "Nauczyciel: " + teacher_value + "<br>" + "Przedmiot: " + subject_value + "<br>" + "Sala: " + room_value;
             decrease_counters(subject_value, class_value);
         }
     }

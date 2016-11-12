@@ -37,42 +37,45 @@ table {
 
 #save_classes_to_db_bttn{
     position: absolute;
-    left: 21%;
-    top: 95px;
+    left: 2%;
+    top: 799px;
 }
 
 #add_classes_modal_button{
     position: absolute;
     left: 2%;
-    top: 95px;
+    top: 730px;
 }
 
 #add_hours_counters_bttn{
     position: absolute;
-    left: 12%;
+    left: 2%;
     top: 95px;
 }
 
 .timetable{
     position: absolute;
     left: 30%;
+    right: 10%;
     height: auto;
-    top: 95px;
+    top: 730px;
 }
 
 div.timetable{
-    width: 55%;
+    width: auto;
     overflow: auto;
 }
 
 .counters{
     position: absolute;
-    left: 30%;
-    height: 25%;
-    top: 67%;
+    left: 10%;
+    right: 10%;
+    height: auto;
+    top: 95px;
 }
 
 div.counters{
+    width: auto;
     overflow: auto;
 }
 

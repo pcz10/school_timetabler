@@ -11,6 +11,7 @@
         <script src="/static/js/bootstrap.min.js"></script>
         <script src="/static/js/accept_classes.js"></script>
         <script src="/static/js/accept_counters.js"></script>
+        <script src="/static/js/view_generated_plans.js"></script>
     </head>
 
     <body class="body">
@@ -46,18 +47,16 @@
             <!-- /.container -->
         </nav>
         <div class="timetable">
-            <table  style="background-color:#f6f6f6">
-                <tr>
-                    <th>
-                        <select id="choose_day" style="position: absolute;">
-                            <option value="Poniedziałek">Poniedziałek</option>
-                            <option value="Wtorek">Wtorek</option>
-                            <option value="Środa">Środa</option>
-                            <option value="Czwartek">Czwartek</option>
-                            <option value="Piątek">Piątek</option>
-                        </select>
-                    </th>
-                </tr>
+            <table id="clearable" style="background-color:#f6f6f6">
+                <th colspan="111">
+                    <select id="choose_day" style="position: relative;">
+                        <option onclick="clear_table('clearable')" value="Poniedziałek">Poniedziałek</option>
+                        <option onclick="clear_table('clearable')" value="Wtorek">Wtorek</option>
+                        <option onclick="clear_table('clearable')" value="Środa">Środa</option>
+                        <option onclick="clear_table('clearable')" value="Czwartek">Czwartek</option>
+                        <option onclick="clear_table('clearable')" value="Piątek">Piątek</option>
+                    </select>
+                </th>
                 <tr>
                     <th class="blank"></th>
                     {% for class in classes %}
@@ -66,7 +65,7 @@
                 </tr>
                 {% for class_counter in classes_counter %}
                 <tr>
-                    <td class="class_counter">{{ class_counter }}</td>
+                    <th class="class_counter">{{ class_counter }}</th>
                     {% for class in classes %}
                     <td id="{{ class_counter }}-{{ class }}" style="min-width: 100px; height: 60px;" class="classes"></td>
                     {% endfor %}

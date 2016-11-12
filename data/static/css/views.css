@@ -42,6 +42,27 @@ table {
     top: 95px;
 }
 
+#view_grades_button{
+    position: absolute;
+    left: 1%;
+    height: auto;
+    top: 800px;
+}
+
+#print_teachers_button{
+    position: absolute;
+    left: 1%;
+    height: auto;
+    top: 165px;
+}
+
+#print_grades_button{
+    position: absolute;
+    left: 1%;
+    height: auto;
+    top: 870px;
+}
+
 .teachers_view{
     position: absolute;
     left: 10%;
@@ -50,7 +71,20 @@ table {
     top: 95px;
 }
 
+.grades_view{
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    height: auto;
+    top: 800px;
+}
+
 div.teachers_view{
+    width: auto;
+    overflow: auto;
+}
+
+div.grades_view{
     width: auto;
     overflow: auto;
 }

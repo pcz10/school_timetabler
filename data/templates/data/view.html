@@ -43,21 +43,64 @@
             <!-- /.container -->
         </nav>
 
-        <button onclick="view_teachers_plan('{{ classes }}')" type="button" class="btn btn-success" id="view_teachers_button">Wyświetl plan nauczycieli</button>
+        <button onclick="view_teachers_plan('{{ classes }}')" type="button" class="btn btn-success" id="view_teachers_button">Wyświetl plan<br> dla nauczycieli</button>
 
-        <div class="teachers_view">
-            <table  style="background-color:#f6f6f6">
+        <button onclick="printTable('printable_teachers')" type="button" class="btn btn-success" id="print_teachers_button">Drukuj plan<br> dla nauczycieli</button>
+
+        <div class="teachers_view" id="printable_teachers">
+            <table id="clearable_teachers" style="background-color:#f6f6f6">
+                <th colspan="101">
+                    <select id="choose_day_teachers" style="position: relative;">
+                        <option onclick="clear_table('clearable_teachers')" value="Poniedziałek">Poniedziałek</option>
+                        <option onclick="clear_table('clearable_teachers')" value="Wtorek">Wtorek</option>
+                        <option onclick="clear_table('clearable_teachers')" value="Środa">Środa</option>
+                        <option onclick="clear_table('clearable_teachers')" value="Czwartek">Czwartek</option>
+                        <option onclick="clear_table('clearable_teachers')" value="Piątek">Piątek</option>
+                    </select>
+                </th>
                 <tr>
                     <th class="blank"></th>
                     {% for teacher in teachers %}
-                    <th id ="{{ teacher.name }} {{ teacher.surname }}" class="title">{{ teacher.name }} {{ teacher.surname }}</th>
+                    <th style="min-width: 200px" id ="{{ teacher.name }} {{ teacher.surname }}" class="title">{{ teacher.name }} {{ teacher.surname }}</th>
                     {% endfor %}
                 </tr>
                 {% for class_counter in classes_counter %}
                 <tr>
-                    <td class="class_counter">{{ class_counter }}</td>
+                    <th class="class_counter">{{ class_counter }}</th>
                     {% for teacher in teachers %}
-                    <td id="{{ class_counter }}-{{ teacher.name }} {{ teacher.surname }}" style="min-width: 100px; height: 60px;" class="classes"></td>
+                    <td id="{{ class_counter }}-{{ teacher.name }} {{ teacher.surname }}" style="min-width: 100px; height: 60px;" class="clearable"></td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <button onclick="view_grades_plan('{{ classes }}')" type="button" class="btn btn-success" id="view_grades_button">Wyświetl plan<br> dla klas</button>
+
+        <button onclick="printTable('printable_grades')" type="button" class="btn btn-success" id="print_grades_button">Drukuj plan<br> dla klas</button>
+
+        <div class="grades_view" id="printable_grades">
+            <table id="clearable_classes" style="background-color:#f6f6f6">
+                <th colspan="101">
+                    <select id="choose_day_grades" style="position: relative;">
+                        <option onclick="clear_table('clearable_classes')" value="Poniedziałek">Poniedziałek</option>
+                        <option onclick="clear_table('clearable_classes')" value="Wtorek">Wtorek</option>
+                        <option onclick="clear_table('clearable_classes')" value="Środa">Środa</option>
+                        <option onclick="clear_table('clearable_classes')" value="Czwartek">Czwartek</option>
+                        <option onclick="clear_table('clearable_classes')" value="Piątek">Piątek</option>
+                    </select>
+                </th>
+                <tr>
+                    <th class="blank"></th>
+                    {% for grade in grades %}
+                    <th style="min-width: 200px" id ="{{ grade.name }}" class="title">{{ grade.name }}</th>
+                    {% endfor %}
+                </tr>
+                {% for class_counter in classes_counter %}
+                <tr>
+                    <th class="class_counter">{{ class_counter }}</th>
+                    {% for grade in grades %}
+                    <td id="{{ class_counter }}-{{ grade.name }}" style="min-width: 100px; height: 60px;" class="clearable"></td>
                     {% endfor %}
                 </tr>
                 {% endfor %}
