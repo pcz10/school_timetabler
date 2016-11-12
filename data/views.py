@@ -13,11 +13,12 @@ def index(request):
 def view(request):
     classes = Classes.objects.order_by('grade')
     grades = Class.objects.order_by('name')
+    teachers = Teacher.objects.order_by('name')
     classes_ctr_dict = collections.OrderedDict()
     __fill_dict(classes_ctr_dict)
     serialized_classes = serializers.serialize('json', classes)
     return render(request, 'data/view.html', {'classes': serialized_classes, 'grades': grades,
-                                              'classes_counter': classes_ctr_dict})
+                                              'classes_counter': classes_ctr_dict, 'teachers': teachers})
 
 
 def timetable(request):

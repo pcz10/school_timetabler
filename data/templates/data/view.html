@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="/static/css/views.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="/static/js/bootstrap.min.js"></script>
+        <script src="/static/js/view_generated_plans.js"></script>
     </head>
 
     <body>
@@ -42,19 +43,21 @@
             <!-- /.container -->
         </nav>
 
+        <button onclick="view_teachers_plan('{{ classes }}')" type="button" class="btn btn-success" id="view_teachers_button">Wyświetl plan nauczycieli</button>
+
         <div class="teachers_view">
             <table  style="background-color:#f6f6f6">
                 <tr>
                     <th class="blank"></th>
-                    {% for grade in grades %}
-                    <th id ="{{ grade.name }}" class="title">{{ grade.name }}</th>
+                    {% for teacher in teachers %}
+                    <th id ="{{ teacher.name }} {{ teacher.surname }}" class="title">{{ teacher.name }} {{ teacher.surname }}</th>
                     {% endfor %}
                 </tr>
                 {% for class_counter in classes_counter %}
                 <tr>
                     <td class="class_counter">{{ class_counter }}</td>
-                    {% for class in classes %}
-                    <td id="{{ class_counter }}-{{ class }}" style="min-width: 100px; height: 60px;" class="classes"></td>
+                    {% for teacher in teachers %}
+                    <td id="{{ class_counter }}-{{ teacher.name }} {{ teacher.surname }}" style="min-width: 100px; height: 60px;" class="classes"></td>
                     {% endfor %}
                 </tr>
                 {% endfor %}

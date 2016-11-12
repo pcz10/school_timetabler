@@ -35,6 +35,13 @@ table {
     border-spacing: 0;
 }
 
+#view_teachers_button{
+    position: absolute;
+    left: 1%;
+    height: auto;
+    top: 95px;
+}
+
 .teachers_view{
     position: absolute;
     left: 10%;
