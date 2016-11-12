@@ -85,7 +85,7 @@ function add_classes() {
     var day_value = selected_day.options[selected_day.selectedIndex].value;
 
     var classes_obj = {day: day_value, teacher: teacher_value, subject: subject_value, room: room_value,
-        class: class_value, class_number: class_number_value};
+        class: class_value, classes_number: class_number_value};
 
 
     if(classes_holder.length == 0) {
@@ -112,3 +112,83 @@ function add_classes() {
         }
     }
 }
+
+function post_classes() {
+    for(i = 0; i < classes_holder.length; i++) {
+        var classes = {
+            grade: classes_holder[i].class,
+            classes_number: classes_holder[i].classes_number,
+            day: classes_holder[i].day,
+            room: classes_holder[i].room,
+            subject: classes_holder[i].subject,
+            teacher: classes_holder[i].teacher
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: '/timetable',
+            data: classes,
+        })
+    }
+}
+
+function getCookie(name) {
+    var cookieValue = null;
+    var i = 0;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (i; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = getCookie('csrftoken');
+
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+$.ajaxSetup({
+    crossDomain: false, // obviates need for sameOrigin test
+    beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type)) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>School Timetable</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/css/views.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="/static/js/bootstrap.min.js"></script>
+    </head>
+
+    <body>
+                <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+            <div class="container topnav">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand topnav" href="#">Wyświetl plany</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="/#about">Start</a>
+                        </li>
+                        <li>
+                            <a href="/#services">Usługi</a>
+                        </li>
+                        <li>
+                            <a href="/#contact">Kontakt</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
+
+        <div class="teachers_view">
+            <table  style="background-color:#f6f6f6">
+                <tr>
+                    <th class="blank"></th>
+                    {% for grade in grades %}
+                    <th id ="{{ grade.name }}" class="title">{{ grade.name }}</th>
+                    {% endfor %}
+                </tr>
+                {% for class_counter in classes_counter %}
+                <tr>
+                    <td class="class_counter">{{ class_counter }}</td>
+                    {% for class in classes %}
+                    <td id="{{ class_counter }}-{{ class }}" style="min-width: 100px; height: 60px;" class="classes"></td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </body>
+</html>

@@ -46,14 +46,17 @@ class Classroom(models.Model):
 
 
 class Classes(models.Model):
-    classes_number = models.IntegerField()
-    day = models.CharField(max_length=20)
-    teacher = models.ForeignKey(Teacher) 
-    subject = models.ForeignKey(Subject)
-    room = models.ForeignKey(Classroom)
+    grade = models.CharField(max_length=5, default='')
+    classes_number = models.CharField(max_length=5, default='')
+    day = models.CharField(max_length=20, default='')
+    room = models.CharField(max_length=50, default='')
+    subject = models.CharField(max_length=50, default='')
+    teacher = models.CharField(max_length=50, default='')
 
     def __unicode__(self):
-        return str(self.day + self.teacher + self.subject + self.room + str(self.classes_number))
+        return str("Day: " + self.day + " Teacher: " + self.teacher + " Subject: " + self.subject +\
+            " Room: " + self.room + " Classes_nr: " + self.classes_number)
 
     def __str__(self):
-        return str(self.day + self.teacher + self.subject + self.room + str(self.classes_number))
+        return str("Day: " + self.day + " Teacher: " + self.teacher + " Subject: " + self.subject +\
+            " Room: " + self.room + " Classes_nr: " + self.classes_number)

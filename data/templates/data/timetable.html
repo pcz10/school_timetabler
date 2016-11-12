@@ -31,13 +31,13 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="#about">Start</a>
+                            <a href="/#about">Start</a>
                         </li>
                         <li>
-                            <a href="#services">Usługi</a>
+                            <a href="/#services">Usługi</a>
                         </li>
                         <li>
-                            <a href="#contact">Kontakt</a>
+                            <a href="/#contact">Kontakt</a>
                         </li>
                     </ul>
                 </div>
@@ -74,8 +74,8 @@
                 {% endfor %}
             </table>
         </div>
-
-        <button type="button" class="btn btn-success btn-md" id="save_classes_to_db_bttn">Zapisz plan</button>
+        {% csrf_token %}
+        <button onclick="post_classes()" type="button" class="btn btn-success btn-md" id="save_classes_to_db_bttn">Zapisz plan</button>
 
         <button type="button" class="btn btn-info btn-md" data-toggle="modal"
             data-target="#add_classes_modal" id ="add_classes_modal_button">Dodaj zajęcia</button>
