@@ -1,15 +1,8 @@
-form {
-  width: 100px;
-  position: absolute;
-  top: 20%;
-  left: 20%;
+body {
+    background-image: url("/static/img/banner-bg.jpg");
+    background-repeat: no-repeat;
 }
 
-label {
-  display: inline-block;
-  width: 152px;
-}
-
-input {
-  display: inline-block;
+#movable_cont {
+    top: 50%;
 }
