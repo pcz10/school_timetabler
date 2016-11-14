@@ -38,7 +38,7 @@ function printTable(table_id)
 {
    var divToPrint=document.getElementById(table_id);
    newWin= window.open("");
-   newWin.document.write(divToPrint.outerHTML);
+   newWin.document.write(divToPrint.outerH TML);
    newWin.print();
    newWin.close();
 }

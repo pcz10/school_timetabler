@@ -106,7 +106,6 @@ function display_actual_classes(table_id){
     }
 }
 
-
 function add_classes() {
     var selected_class = document.getElementById("choose_class");
     var selected_class_number = document.getElementById("choose_classes_number");

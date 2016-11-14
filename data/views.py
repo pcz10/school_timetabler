@@ -1,11 +1,13 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.core import serializers
+from django.contrib.auth.decorators import login_required
 from .forms import SubjectForm, TeacherForm, ClassroomForm, ClassForm, ClassesForm
 from .models import Subject, Class, Teacher, Classroom, Classes
 import collections
 
 
+@login_required(login_url="login/")
 def index(request):
     return render(request, 'data/index.html')
 
